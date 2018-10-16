@@ -49,3 +49,6 @@ plugged/
 
 # netrw history
 .netrwhist
+
+# Old Plug version
+/autoload/plug.vim.old
