@@ -1,0 +1,12 @@
+# Ignore everything
+/*
+
+# Except these files
+!README.md
+!.gitignore
+!install.py
+
+# And these directories
+!/editorconfig/
+!/nvim/
+!/tmux/
