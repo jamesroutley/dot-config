@@ -9,6 +9,7 @@ Symlink = collections.namedtuple("Symlink", ["src", "dst"])
 symlinks = [
     Symlink("~/.config/editorconfig/.editorconfig", "~/.editorconfig"),
     Symlink("~/.config/tmux/.tmux.conf", "~/.tmux.conf"),
+    Symlink("~/.config/zsh/.zshrc", "~/.zshrc"),
 ]
 
 

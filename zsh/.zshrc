@@ -1,0 +1,98 @@
+## $PATH related things
+export PATH="$HOME/homebrew/sbin:$HOME/homebrew/bin:$PATH"
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/Users/jamesroutley/homebrew/opt/go@1.8/bin:$PATH"
+
+# Use homebrew python instead of system python
+if [ -d "/Users/jamesroutley/homebrew/opt/python/libexec/bin" ]; then
+    export PATH="/Users/jamesroutley/homebrew/opt/python/libexec/bin:$PATH"
+fi
+
+export PATH="/Users/jamesroutley/homebrew/opt/python@2/libexec/bin:$PATH"
+
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+
+
+## ZSH customisation
+
+# Prompt settings
+# %. displays the trailing component of the current working dir
+# %% displays a percentage sign
+PROMPT='%. %% '
+
+# Display which git branch you're in
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
+PROMPT=\$vcs_info_msg_0_'%# '
+zstyle ':vcs_info:git:*' formats '%b'
+
+# Enable zsh vim mode
+set -o vi
+
+# Arrow-key autocomplete selection
+zstyle ':completion:*' menu select
+
+
+## Aliases
+
+# Add ls options. all, long, human-readable, slashes after directories
+alias ll='ls -hlGFA'
+
+# Git aliases:
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+
+
+## Tool customisation
+
+# Make nvim the default editor, if it exists
+if command -v nvim &>/dev/null
+then
+	export EDITOR="nvim"
+else
+	export EDITOR="vim"
+fi
+
+# Enable git completion (maybe this enables autocompletion generally?)
+autoload -Uz compinit && compinit
+
+# Coloured ls output
+export CLICOLOR=1
+
+# Set up FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+## Helper functions
+
+# Git Ignore Generator
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+# Serve go documentation
+function gwd () {
+    echo "Listening on localhost:5001"
+    godoc -http :5001 &
+    open 'http://localhost:5001'
+    echo "Kill server with:"
+    echo "kill" $!
+}
+
+# TODO: move to personal .sh
+awscm() {
+    tmpfile=$(mktemp)
+    /Users/helsinki/homebrew/bin/awscm --file "$tmpfile" "$@"
+    . "$tmpfile"
+    rm "$tmpfile"
+}
+
+
+## Laptop-specific setup
+
+# Set up Monzo specific things
+[ -f $HOME/.config/zsh/monzo.sh ] && source $HOME/.config/zsh/monzo.sh
