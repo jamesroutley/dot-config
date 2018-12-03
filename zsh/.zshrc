@@ -83,16 +83,9 @@ function gwd () {
     echo "kill" $!
 }
 
-# TODO: move to personal .sh
-awscm() {
-    tmpfile=$(mktemp)
-    /Users/helsinki/homebrew/bin/awscm --file "$tmpfile" "$@"
-    . "$tmpfile"
-    rm "$tmpfile"
-}
-
 
 ## Laptop-specific setup
+[ -f $HOME/.config/zsh/personal.sh ] && source $HOME/.config/zsh/personal.sh
 
 # Set up Monzo specific things
 [ -f $HOME/.config/zsh/monzo.sh ] && source $HOME/.config/zsh/monzo.sh
