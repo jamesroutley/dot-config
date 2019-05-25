@@ -5,7 +5,6 @@ import os
 
 Symlink = collections.namedtuple("Symlink", ["src", "dst"])
 
-
 symlinks = [
     Symlink("~/.config/editorconfig/.editorconfig", "~/.editorconfig"),
     Symlink("~/.config/tmux/.tmux.conf", "~/.tmux.conf"),
@@ -17,7 +16,7 @@ def clean():
     for symlink in symlinks:
         try:
             os.remove(os.path.expanduser(symlink.dst))
-        except OSError as e:
+        except OSError:
             # Ignore the error thrown if the symlink doesn't already exist
             continue
 
@@ -25,7 +24,8 @@ def clean():
 def run():
     clean()
     for symlink in symlinks:
-        os.symlink(os.path.expanduser(symlink.src), os.path.expanduser(symlink.dst))
+        os.symlink(
+            os.path.expanduser(symlink.src), os.path.expanduser(symlink.dst))
 
 
 if __name__ == "__main__":

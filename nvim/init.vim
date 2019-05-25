@@ -48,11 +48,12 @@ Plug 'junegunn/fzf.vim'
 " CtrlSF: searching
 Plug 'dyng/ctrlsf.vim'
 
-" Minisnip: code snippets
-Plug 'KeyboardFire/vim-minisnip'
-
 " Editorconfig: editor configuration
 Plug 'editorconfig/editorconfig-vim'
+
+" Deoplete: autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
 
 " Initialise plugin system
 call plug#end()
@@ -139,3 +140,6 @@ set wildmenu
 
 " Use '%' to jump to the corresponding HTML tag
 runtime macros/matchit.vim
+
+" Deoplete <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
