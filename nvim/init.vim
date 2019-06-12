@@ -143,3 +143,9 @@ runtime macros/matchit.vim
 
 " Deoplete <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Disable modelines. I don't use them, and they've been the source of
+" vulnerabilities in the past - e.g:
+" https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
+set modelines=0
+set nomodeline
