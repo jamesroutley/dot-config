@@ -55,6 +55,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 
+" Vim Markdown
+Plug 'plasticboy/vim-markdown'
+
 " Initialise plugin system
 call plug#end()
 
@@ -143,3 +146,9 @@ runtime macros/matchit.vim
 
 " Deoplete <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Vim Markdown
+" Disable folding
+let g:vim_markdown_folding_disabled = 1
+" Syntax highlight YAML frontmatter
+let g:vim_markdown_frontmatter = 1
