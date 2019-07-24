@@ -152,3 +152,9 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:vim_markdown_folding_disabled = 1
 " Syntax highlight YAML frontmatter
 let g:vim_markdown_frontmatter = 1
+
+" Disable modelines. I don't use them, and they've been the source of
+" vulnerabilities in the past - e.g:
+" https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
+set modelines=0
+set nomodeline
