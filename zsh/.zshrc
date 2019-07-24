@@ -21,14 +21,12 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
-PROMPT=\$vcs_info_msg_0_'%# '
 zstyle ':vcs_info:git:*' formats '%b'
 
 # Prompt settings
 # %. displays the trailing component of the current working dir
 # %% displays a percentage sign
-PROMPT='%. %% '
+PROMPT="\$vcs_info_msg_0_ %. %% "
 
 # Enable zsh vim mode
 set -o vi
