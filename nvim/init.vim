@@ -158,3 +158,7 @@ let g:vim_markdown_frontmatter = 1
 " https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
 set modelines=0
 set nomodeline
+
+" Add a new command, :Ds, which enters a datestamp under the cursor, with a
+" markdown h2 ## before it
+command! -nargs=0 Ds execute "normal! i## " . strftime("%Y-%m-%d") . "\n\n- "
