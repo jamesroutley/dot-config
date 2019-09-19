@@ -7,8 +7,9 @@
 !install.py
 
 # And these directories
+!/cookbook/
 !/editorconfig/
+!/git/
 !/nvim/
 !/tmux/
 !/zsh/
-!/git/
