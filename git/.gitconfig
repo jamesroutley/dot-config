@@ -1,0 +1,13 @@
+; [url "git@github.com:"]
+; 	insteadOf = https://github.com/
+[user]
+	email = jroutley@gmail.com
+	name = James Routley
+[core]
+	editor = nvim
+	excludesfile = ~/.config/git/gitignore
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

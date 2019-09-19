@@ -9,6 +9,7 @@ symlinks = [
     Symlink("~/.config/editorconfig/.editorconfig", "~/.editorconfig"),
     Symlink("~/.config/tmux/.tmux.conf", "~/.tmux.conf"),
     Symlink("~/.config/zsh/.zshrc", "~/.zshrc"),
+    Symlink("~/.config/git/.gitconfig", "~/.gitconfig"),
 ]
 
 
