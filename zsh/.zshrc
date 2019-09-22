@@ -3,6 +3,7 @@ export PATH="$HOME/homebrew/sbin:$HOME/homebrew/bin:$PATH"
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/Users/jamesroutley/homebrew/opt/go@1.8/bin:$PATH"
+export PATH="$HOME/.config/bin:$PATH"
 
 # Use homebrew python instead of system python
 if [ -d "/Users/jamesroutley/homebrew/opt/python/libexec/bin" ]; then

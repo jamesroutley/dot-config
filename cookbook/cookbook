@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+
+import argparse
+import glob
+import os
+import pathlib
+import subprocess
+import typing
+
+class CookbookException(Exception):
+    pass
+
+
+recipes_dir = os.path.join(
+    str(pathlib.Path.home()),
+    ".config",
+    "cookbook",
+    "recipes"
+)
+
+def _recipe_names() -> typing.List[str]:
+    recipe_files = glob.glob(os.path.join(recipes_dir, "*.md"))
+    recipe_files = [os.path.basename(file) for file in recipe_files]
+    recipe_names = [file.split(".")[0] for file in recipe_files]
+    recipe_names.sort()
+    return recipe_names
+
+
+def show(args: argparse.Namespace):
+    name = args.name
+    if name not in _recipe_names():
+        raise CookbookException(f"recipe '{name}' not found")
+
+    recipe_file = os.path.join(recipes_dir, name + ".md")
+    with open(recipe_file) as f:
+        print(f.read())
+
+def edit(args: argparse.Namespace):
+    recipe_path = os.path.join(recipes_dir, args.name + ".md")
+    subprocess.run(["nvim", recipe_path])
+
+    # If the file is empty or only contians whitespace, delete it
+    with open(recipe_path) as f:
+        text = f.read().strip()
+    if text == "":
+        os.remove(recipe_path)
+
+
+def list_recipes(args: argparse.Namespace):
+    print("\n".join(_recipe_names()))
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="TODO")
+
+    subparsers = parser.add_subparsers(dest="cmd")
+    subparsers.required = True
+
+    parser_show = subparsers.add_parser("show")
+    parser_show.add_argument('name', type=str)
+    parser_show.set_defaults(func=show)
+
+    parser_edit = subparsers.add_parser("edit")
+    parser_edit.add_argument('name', type=str)
+    parser_edit.set_defaults(func=edit)
+
+    parser_list = subparsers.add_parser("list")
+    parser_list.set_defaults(func=list_recipes)
+
+    args = parser.parse_args()
+    try:
+        args.func(args)
+    except CookbookException as e:
+        print("Error:", e)
