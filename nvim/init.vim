@@ -116,7 +116,10 @@ nnoremap = :vsplit<cr>
 :let g:ale_fixers = {
 \	'go': ['goimports'],
 \	'python': ['black', 'yapf'],
-\	'javascript': ['prettier']
+\	'javascript': ['prettier'],
+\	'html': ['prettier'],
+\	'css': ['prettier'],
+\	'typescript': ['prettier']
 \}
 
 let g:ale_fix_on_save = 1
