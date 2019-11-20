@@ -35,6 +35,11 @@ set -o vi
 # Arrow-key autocomplete selection
 zstyle ':completion:*' menu select
 
+# Set up history: https://unix.stackexchange.com/a/111777
+[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=10000
+
 
 ## Aliases
 
