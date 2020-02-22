@@ -1,6 +1,6 @@
 {
     "coc.preferences.formatOnType": true,
-    "coc.preferences.formatOnSaveFiletypes": ["go", "javascript", "scss", "javascriptreact"],
+    "coc.preferences.formatOnSaveFiletypes": ["go", "javascript", "scss", "javascriptreact", "markdown"],
     "snippets.ultisnips.directories": [
         "UltiSnips",
         "gosnippets/UltiSnips"
