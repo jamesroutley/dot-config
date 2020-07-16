@@ -51,6 +51,9 @@ Plug 'dyng/ctrlsf.vim'
 " Editorconfig: editor configuration
 Plug 'editorconfig/editorconfig-vim'
 
+" Vim wiki
+Plug 'vimwiki/vimwiki'
+
 " Deoplete: autocomplete
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " let g:deoplete#enable_at_startup = 1
@@ -203,3 +206,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Add a new command, :Ds, which enters a datestamp under the cursor, with a
 " markdown h2 ## before it
 command! -nargs=0 Ds execute "normal! i## " . strftime("%Y-%m-%d") . "\n\n- "
+
+let g:vimwiki_list = [{'path': '~/knowledge-base/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
