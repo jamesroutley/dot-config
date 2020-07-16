@@ -120,6 +120,7 @@ nnoremap = :vsplit<cr>
 \	'go': ['goimports'],
 \	'python': ['black', 'yapf'],
 \	'javascript': ['prettier'],
+\	'json': ['prettier'],
 \   'javascriptreact': ['prettier'],
 \	'html': ['prettier'],
 \	'css': ['prettier'],
