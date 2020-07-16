@@ -111,7 +111,7 @@ nnoremap = :vsplit<cr>
 
 " Custom ALE linters
 :let g:ale_linters = {
-\	'go': ['goimports', 'go build'],
+\	'go': ['goimports', 'go build', 'go vet', 'staticcheck'],
 \	'markdown': []
 \}
 
@@ -128,6 +128,16 @@ nnoremap = :vsplit<cr>
 \}
 
 let g:ale_fix_on_save = 1
+
+" Disable gopls
+let g:go_gopls_enabled = 0
+" Replace functions that use gopls by default with other implementations
+let g:go_info_mode = 'guru'
+let g:go_def_mode = 'guru'
+let g:go_referrers_mode = 'guru'
+
+" Monzo import sorting
+let g:ale_go_goimports_options = '-local "github.monzo.com"'
 
 " Wrap long lines on spaces/tabs rather than the last character that fits on the screen
 set linebreak

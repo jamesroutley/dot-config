@@ -7,16 +7,13 @@ import pathlib
 import subprocess
 import typing
 
+
 class CookbookException(Exception):
     pass
 
 
-recipes_dir = os.path.join(
-    str(pathlib.Path.home()),
-    ".config",
-    "cookbook",
-    "recipes"
-)
+recipes_dir = os.path.join(str(pathlib.Path.home()), ".config", "cookbook", "recipes")
+
 
 def _recipe_names() -> typing.List[str]:
     recipe_files = glob.glob(os.path.join(recipes_dir, "*.md"))
@@ -34,6 +31,7 @@ def show(args: argparse.Namespace):
     recipe_file = os.path.join(recipes_dir, name + ".md")
     with open(recipe_file) as f:
         print(f.read())
+
 
 def edit(args: argparse.Namespace):
     recipe_path = os.path.join(recipes_dir, args.name + ".md")
@@ -57,11 +55,11 @@ if __name__ == "__main__":
     subparsers.required = True
 
     parser_show = subparsers.add_parser("show")
-    parser_show.add_argument('name', type=str)
+    parser_show.add_argument("name", type=str)
     parser_show.set_defaults(func=show)
 
     parser_edit = subparsers.add_parser("edit")
-    parser_edit.add_argument('name', type=str)
+    parser_edit.add_argument("name", type=str)
     parser_edit.set_defaults(func=edit)
 
     parser_list = subparsers.add_parser("list")

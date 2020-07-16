@@ -93,3 +93,8 @@ function gwd () {
 
 # Set up Monzo specific things
 [ -f $HOME/.config/zsh/monzo.sh ] && source $HOME/.config/zsh/monzo.sh
+
+
+source /Users/jamesroutley/code/mz/analytics/dbt/misc/shell/source.sh
+
+
