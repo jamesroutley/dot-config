@@ -62,7 +62,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Vim Markdown
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 
 " Initialise plugin system
 call plug#end()
@@ -207,5 +207,14 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " markdown h2 ## before it
 command! -nargs=0 Ds execute "normal! i## " . strftime("%Y-%m-%d") . "\n\n- "
 
+" Vim wiki config
 let g:vimwiki_list = [{'path': '~/knowledge-base/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" Remove duplicate Vim wiki mappings. Mapping to the first bit of a UUID
+" because I don't know how to unmap :shrug:
+nmap <leader>B5BF6201 <Plug>VimwikiAddHeaderLevel
+nmap <leader>96B18E9D <Plug>VimwikiRemoveHeaderLevel
+
+autocmd Filetype vimwiki nmap <C-j> <Plug>VimwikiNextLink
+autocmd Filetype vimwiki nmap <C-k> <Plug>VimwikiPrevLink
