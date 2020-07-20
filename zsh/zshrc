@@ -97,5 +97,3 @@ function gwd () {
 
 
 source /Users/jamesroutley/code/mz/analytics/dbt/misc/shell/source.sh
-
-
