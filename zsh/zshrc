@@ -96,4 +96,4 @@ function gwd () {
 [ -f $HOME/.config/zsh/monzo.sh ] && source $HOME/.config/zsh/monzo.sh
 
 
-source /Users/jamesroutley/code/mz/analytics/dbt/misc/shell/source.sh
+[ -f /Users/jamesroutley/code/mz/analytics/dbt/misc/shell/source.sh ] && source /Users/jamesroutley/code/mz/analytics/dbt/misc/shell/source.sh
