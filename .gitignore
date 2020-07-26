@@ -5,6 +5,7 @@
 !README.md
 !.gitignore
 !Makefile
+!starship.toml
 
 # And these directories
 !/cookbook/

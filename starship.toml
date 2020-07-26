@@ -1,0 +1,10 @@
+prompt_order = ["directory", "git_branch", "time", "cmd_duration", "line_break" ,"character"]
+
+[git_branch]
+symbol = "🌱 "
+
+[time]
+disabled = false
+
+[character]
+symbol = "$"
