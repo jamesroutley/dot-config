@@ -128,7 +128,8 @@ nnoremap = :vsplit<cr>
 \	'html': ['prettier'],
 \	'css': ['prettier'],
 \   'markdown': ['prettier'],
-\	'typescript': ['prettier']
+\	'typescript': ['prettier'],
+\   'vimwiki': ['prettier']
 \}
 
 let g:ale_fix_on_save = 1
@@ -208,8 +209,15 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 command! -nargs=0 Ds execute "normal! i## " . strftime("%Y-%m-%d") . "\n\n- "
 
 " Vim wiki config
-let g:vimwiki_list = [{'path': '~/knowledge-base/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{
+\   'path': '~/knowledge-base/',
+\   'syntax': 'markdown',
+\   'ext': '.md',
+\   'links_space_char': '-'
+\}]
+
+" Auto generate headers in vimwiki files
+let g:vimwiki_auto_header = 1
 
 " Remove duplicate Vim wiki mappings. Mapping to the first bit of a UUID
 " because I don't know how to unmap :shrug:
