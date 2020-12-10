@@ -7,7 +7,9 @@
       "rootPatterns": ["main.go", "go.mod"],
       "requireRootPattern": true,
       "initializationOptions": {
-        "deepCompletion": false
+        "deepCompletion": false,
+        "usePlaceholders": true,
+        "staticcheck": true
       },
       "ignoredRootPaths": ["$HOME/src/github.com/monzo/wearedev/"],
       "disableWorkspaceFolders": true

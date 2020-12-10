@@ -15,10 +15,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim'
 
 " Polyglot: syntax highlighting for common languages
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 " Ale: asynchronous lint engine
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " Vim Go: Golang development
 " Plug 'fatih/vim-go'
@@ -27,13 +27,13 @@ Plug 'w0rp/ale'
 Plug 'tpope/vim-vinegar'
 
 " Goyo: distraction-free writing
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 
 " Logbook: take note
 Plug 'jamesroutley/logbook.vim'
 
 " Pico8 syntax
-Plug 'justinj/vim-pico8-syntax'
+" Plug 'justinj/vim-pico8-syntax'
 
 " Fugitive: git wrapper
 Plug 'tpope/vim-fugitive'
@@ -52,7 +52,7 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 " Vim wiki
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 
 " Deoplete: autocomplete
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -225,3 +225,6 @@ nmap <leader>96B18E9D <Plug>VimwikiRemoveHeaderLevel
 
 autocmd Filetype vimwiki nmap <C-j> <Plug>VimwikiNextLink
 autocmd Filetype vimwiki nmap <C-k> <Plug>VimwikiPrevLink
+
+" Organise go imports on save https://go.googlesource.com/tools/+/refs/heads/master/gopls/doc/vim.md#coc_nvim
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
