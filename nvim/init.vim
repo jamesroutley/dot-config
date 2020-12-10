@@ -21,7 +21,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
 
 " Vim Go: Golang development
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 
 " Vim Vinegar: Simplify netrw
 Plug 'tpope/vim-vinegar'
@@ -134,6 +134,8 @@ nnoremap = :vsplit<cr>
 
 let g:ale_fix_on_save = 1
 
+let g:ale_go_staticcheck_lint_package = 1
+
 " Disable gopls
 let g:go_gopls_enabled = 0
 " Replace functions that use gopls by default with other implementations
@@ -215,9 +217,6 @@ let g:vimwiki_list = [{
 \   'ext': '.md',
 \   'links_space_char': '-'
 \}]
-
-" Auto generate headers in vimwiki files
-let g:vimwiki_auto_header = 1
 
 " Remove duplicate Vim wiki mappings. Mapping to the first bit of a UUID
 " because I don't know how to unmap :shrug:
