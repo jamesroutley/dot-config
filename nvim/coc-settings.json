@@ -1,8 +1,27 @@
 {
-    "coc.preferences.formatOnType": true,
-    "coc.preferences.formatOnSaveFiletypes": ["go", "javascript", "scss", "javascriptreact", "markdown"],
-    "snippets.ultisnips.directories": [
-        "UltiSnips",
-        "gosnippets/UltiSnips"
-    ]
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "args": ["serve", "-debug", ""],
+      "filetypes": ["go"],
+      "rootPatterns": ["main.go", "go.mod"],
+      "requireRootPattern": true,
+      "initializationOptions": {
+        "deepCompletion": false,
+        "usePlaceholders": true,
+        "staticcheck": true
+      },
+      "ignoredRootPaths": ["$HOME/src/github.com/monzo/wearedev/"],
+      "disableWorkspaceFolders": true
+    }
+  },
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go",
+    "javascript",
+    "scss",
+    "javascriptreact",
+    "markdown"
+  ],
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"]
 }
