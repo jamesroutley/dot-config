@@ -34,3 +34,5 @@ setlocal formatoptions+=o
 
 " Accept various markers as bullets
 setlocal comments=b:-\ [\ ],b:-\ [x],b:*,b:+,b:-,
+
+setlocal spell
