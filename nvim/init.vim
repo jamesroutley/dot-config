@@ -18,7 +18,7 @@ Plug 'dracula/vim'
 " Plug 'sheerun/vim-polyglot'
 
 " Ale: asynchronous lint engine
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " Vim Go: Golang development
 " Plug 'fatih/vim-go'
@@ -228,3 +228,10 @@ autocmd Filetype vimwiki nmap <C-k> <Plug>VimwikiPrevLink
 
 " Organise go imports on save https://go.googlesource.com/tools/+/refs/heads/master/gopls/doc/vim.md#coc_nvim
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
+" Use Clojure syntax highlighting for Sketch files
+autocmd BufNewFile,BufRead *.skt   set syntax=clojure
+" Set commentstring for Sketch files, so vim-commentry works
+autocmd BufNewFile,BufRead *.skt   set commentstring=;%s
+
+" autocmd BufNewFile,BufRead *.skt   set formatprg=sketch\ format

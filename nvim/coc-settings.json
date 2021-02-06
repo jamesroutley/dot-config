@@ -2,7 +2,7 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "args": ["serve", "-debug", ""],
+      "args": ["serve", "-rpc.trace", "-debug", "localhost:6060", "-logfile", "/tmp/goplslog"],
       "filetypes": ["go"],
       "rootPatterns": ["main.go", "go.mod"],
       "requireRootPattern": true,

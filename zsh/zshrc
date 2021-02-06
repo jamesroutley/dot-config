@@ -14,6 +14,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/Users/jamesroutley/homebrew/opt/go@1.8/bin:$PATH"
 export PATH="$HOME/.config/bin:$PATH"
 export PATH="$HOME/hacks:$PATH"
+export PATH="/Applications/Racket v7.9/bin:$PATH"
+
 
 # Use homebrew python instead of system python
 if [ -d "/Users/jamesroutley/homebrew/opt/python/libexec/bin" ]; then
@@ -109,3 +111,5 @@ if [ -f '/Users/jamesroutley/google-cloud-sdk/completion.zsh.inc' ]; then . '/Us
 # Stop profiling startup time.
 # unsetopt XTRACE
 # exec 2>&3 3>&-
+# source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+# source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
