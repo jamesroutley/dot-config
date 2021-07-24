@@ -2,7 +2,14 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "args": ["serve", "-rpc.trace", "-debug", "localhost:6060", "-logfile", "/tmp/goplslog"],
+      "args": [
+        "serve",
+        "-rpc.trace",
+        "-debug",
+        "localhost:6060",
+        "-logfile",
+        "/tmp/goplslog"
+      ],
       "filetypes": ["go"],
       "rootPatterns": ["main.go", "go.mod"],
       "requireRootPattern": true,
@@ -17,11 +24,15 @@
   },
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": [
+    "html",
+    "css",
+    "json",
     "go",
     "javascript",
     "scss",
     "javascriptreact",
-    "markdown"
+    "markdown",
+    "typescript"
   ],
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"]
 }
