@@ -5,6 +5,9 @@ call plug#begin('~/.config/nvim/plugged')
 " Auto Pairs: insert or delete brackets, parens, quotes in pairs
 Plug 'jiangmiao/auto-pairs'
 
+" Zig language
+Plug 'ziglang/zig.vim'
+
 " Commentary: comment out lines of code
 Plug 'tpope/vim-commentary'
 
