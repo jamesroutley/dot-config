@@ -32,7 +32,8 @@
     "scss",
     "javascriptreact",
     "markdown",
-    "typescript"
+    "typescript",
+    "python"
   ],
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"]
 }
