@@ -5,6 +5,9 @@ call plug#begin('~/.config/nvim/plugged')
 " Auto Pairs: insert or delete brackets, parens, quotes in pairs
 Plug 'jiangmiao/auto-pairs'
 
+" Zig language
+Plug 'ziglang/zig.vim'
+
 " Commentary: comment out lines of code
 Plug 'tpope/vim-commentary'
 
@@ -227,7 +230,7 @@ autocmd Filetype vimwiki nmap <C-j> <Plug>VimwikiNextLink
 autocmd Filetype vimwiki nmap <C-k> <Plug>VimwikiPrevLink
 
 " Organise go imports on save https://go.googlesource.com/tools/+/refs/heads/master/gopls/doc/vim.md#coc_nvim
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.go :silent :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Use Clojure syntax highlighting for Sketch files
 autocmd BufNewFile,BufRead *.skt   set syntax=clojure

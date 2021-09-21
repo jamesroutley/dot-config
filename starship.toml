@@ -1,10 +1,15 @@
-prompt_order = ["directory", "python", "git_branch", "time", "cmd_duration", "line_break" ,"character"]
+format = """\
+    $directory\
+    $git_branch\
+    $python\
+    $time\
+    $cmd_duration\
+    $line_break\
+    $character\
+"""
 
 [git_branch]
 symbol = "🌱 "
 
 [time]
 disabled = false
-
-[character]
-symbol = "$"

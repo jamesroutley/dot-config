@@ -24,12 +24,17 @@
   },
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": [
+    "html",
+    "css",
+    "json",
     "go",
     "javascript",
     "scss",
     "javascriptreact",
     "markdown",
-    "html"
+    "html",
+    "typescript",
+    "python"
   ],
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"]
 }
