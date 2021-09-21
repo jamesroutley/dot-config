@@ -132,7 +132,7 @@ nnoremap = :vsplit<cr>
 \   'vimwiki': ['prettier']
 \}
 
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 let g:ale_go_staticcheck_lint_package = 1
 
@@ -235,3 +235,6 @@ autocmd BufNewFile,BufRead *.skt   set syntax=clojure
 autocmd BufNewFile,BufRead *.skt   set commentstring=;%s
 
 " autocmd BufNewFile,BufRead *.skt   set formatprg=sketch\ format
+
+" Use SQL syntax highlighting for Sketch files
+autocmd BufNewFile,BufRead *.cql   set syntax=sql
