@@ -62,6 +62,10 @@ gwip() {
     git add .
     git commit -m "WIP"
 }
+grm() {
+    git fetch origin
+    git rebase origin/master
+}
 
 
 ## Tool customisation
