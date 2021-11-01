@@ -118,7 +118,8 @@ nnoremap = :vsplit<cr>
 " Custom ALE linters
 :let g:ale_linters = {
 \	'go': ['goimports', 'go build', 'go vet', 'staticcheck'],
-\	'markdown': []
+\	'markdown': [],
+\   'javascript': []
 \}
 
 " Custom ALE fixers
