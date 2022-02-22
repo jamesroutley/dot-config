@@ -105,7 +105,8 @@ set smartcase
 set colorcolumn=80
 
 " Copy to/from the macOS clipboard
-set clipboard=unnamed
+" set clipboard=unnamed
+set clipboard+=unnamedplus
 
 " Simplify using tabs
 nnoremap ˙ gT
