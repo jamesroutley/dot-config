@@ -15,3 +15,5 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[url "ssh://git@github.com/monzo/"]
+	insteadOf = https://github.com/monzo/
