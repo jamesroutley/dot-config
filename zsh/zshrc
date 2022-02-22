@@ -67,6 +67,8 @@ grm() {
     git rebase origin/master
 }
 
+alias fdb="flexdebug"
+alias fdbs="flexdebug -e s101"
 
 ## Tool customisation
 
