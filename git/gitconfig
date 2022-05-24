@@ -6,6 +6,7 @@
 [core]
 	editor = nvim
 	excludesfile = ~/.config/git/gitignore
+    pager = delta
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -17,3 +18,16 @@
 	defaultBranch = main
 [url "ssh://git@github.com/monzo/"]
 	insteadOf = https://github.com/monzo/
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    side-by-side = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
