@@ -10,9 +10,12 @@
         "-logfile",
         "/tmp/goplslog"
       ],
-      "filetypes": ["go"],
-      "rootPatterns": ["main.go", "go.mod"],
+      "filetypes": ["go", "gomod"],
+      "rootPatterns": ["main.go", "go.mod", "README.md", "LICENSE"],
+      "memoryMode": "DegradeClosed",
       "requireRootPattern": true,
+      "directoryFilters": ["-vendor", "-manifests"],
+      "expandWorkspaceToModule": false,
       "initializationOptions": {
         "deepCompletion": false,
         "usePlaceholders": true,
