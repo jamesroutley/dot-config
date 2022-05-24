@@ -1,9 +1,14 @@
+vim.api.nvim_exec(
+[[
 " vim-plug
 " Plugins will be downloaded to ~/.vim/plugged
 call plug#begin('~/.config/nvim/plugged')
 
 " Auto Pairs: insert or delete brackets, parens, quotes in pairs
 Plug 'jiangmiao/auto-pairs'
+
+" nvim-lspconfig: LSP for nvim
+Plug 'neovim/nvim-lspconfig'
 
 " Zig language
 Plug 'ziglang/zig.vim'
@@ -137,7 +142,7 @@ nnoremap = :vsplit<cr>
 \   'vimwiki': ['prettier']
 \}
 
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 
 let g:ale_go_staticcheck_lint_package = 1
 
@@ -194,14 +199,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -231,9 +228,6 @@ nmap <leader>96B18E9D <Plug>VimwikiRemoveHeaderLevel
 autocmd Filetype vimwiki nmap <C-j> <Plug>VimwikiNextLink
 autocmd Filetype vimwiki nmap <C-k> <Plug>VimwikiPrevLink
 
-" Organise go imports on save https://go.googlesource.com/tools/+/refs/heads/master/gopls/doc/vim.md#coc_nvim
-autocmd BufWritePre *.go :silent :call CocAction('runCommand', 'editor.action.organizeImport')
-
 " Use Clojure syntax highlighting for Sketch files
 autocmd BufNewFile,BufRead *.skt   set syntax=clojure
 " Set commentstring for Sketch files, so vim-commentry works
@@ -243,3 +237,89 @@ autocmd BufNewFile,BufRead *.skt   set commentstring=;%s
 
 " Use SQL syntax highlighting for Sketch files
 autocmd BufNewFile,BufRead *.cql   set syntax=sql
+]],
+true
+)
+
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  if filetype == 'go' then
+      vim.cmd [[autocmd BufWritePre <buffer> :lua require('lsp.helpers').goimports(2000)]]
+  end
+end
+
+local lspconfig = require "lspconfig"
+local util = require "lspconfig/util"
+
+lspconfig.gopls.setup {
+    cmd = {"gopls", "serve"},
+	filetypes = {"go", "gomod"},
+
+	-- Ignore typical project roots which cause gopls to ingest large monorepos.
+	--root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+	root_dir = util.root_pattern("main.go", "README.md", "LICENSE"),
+
+	settings = {
+		gopls = {
+			-- Don't try to find the go.mod file, otherwise we ingest large monorepos
+			expandWorkspaceToModule = false,
+			memoryMode = "DegradeClosed",
+			directoryFilters = {
+				"-vendor",
+				"-manifests",
+			},
+		},
+	},
+
+    on_attach = on_attach,
+}
+
+-- -- Organise imports like goimports
+-- -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#imports
+-- function org_imports(wait_ms)
+-- 	local params = vim.lsp.util.make_range_params()
+-- 	params.context = {only = {"source.organizeImports"}}
+-- 	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+-- 	for _, res in pairs(result or {}) do
+-- 		for _, r in pairs(res.result or {}) do
+-- 			if r.edit then
+-- 				vim.lsp.util.apply_workspace_edit(r.edit)
+-- 			else
+-- 				vim.lsp.buf.execute_command(r.command)
+-- 			end
+-- 		end
+-- 	end
+-- end
+
+-- vim.cmd [[autocmd BufWritePre <buffer> lua org_imports(1000)]]
+
+-- Format on save
+-- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
