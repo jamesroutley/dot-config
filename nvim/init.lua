@@ -142,7 +142,7 @@ nnoremap = :vsplit<cr>
 \   'vimwiki': ['prettier']
 \}
 
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 let g:ale_go_staticcheck_lint_package = 1
 
@@ -241,6 +241,23 @@ autocmd BufNewFile,BufRead *.cql   set syntax=sql
 true
 )
 
+-- Organise imports like goimports
+-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#imports
+function goimports(wait_ms)
+	local params = vim.lsp.util.make_range_params()
+	params.context = {only = {"source.organizeImports"}}
+	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+	for _, res in pairs(result or {}) do
+		for _, r in pairs(res.result or {}) do
+			if r.edit then
+				vim.lsp.util.apply_workspace_edit(r.edit, "utf-16")
+			else
+				vim.lsp.buf.execute_command(r.command)
+			end
+		end
+	end
+end
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -271,8 +288,10 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
+  local filetype = vim.api.nvim_buf_get_option(0, 'filetype')
+
   if filetype == 'go' then
-      vim.cmd [[autocmd BufWritePre <buffer> :lua require('lsp.helpers').goimports(2000)]]
+      vim.cmd [[autocmd BufWritePre <buffer> :lua goimports(2000)]]
   end
 end
 
@@ -301,25 +320,3 @@ lspconfig.gopls.setup {
 
     on_attach = on_attach,
 }
-
--- -- Organise imports like goimports
--- -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#imports
--- function org_imports(wait_ms)
--- 	local params = vim.lsp.util.make_range_params()
--- 	params.context = {only = {"source.organizeImports"}}
--- 	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
--- 	for _, res in pairs(result or {}) do
--- 		for _, r in pairs(res.result or {}) do
--- 			if r.edit then
--- 				vim.lsp.util.apply_workspace_edit(r.edit)
--- 			else
--- 				vim.lsp.buf.execute_command(r.command)
--- 			end
--- 		end
--- 	end
--- end
-
--- vim.cmd [[autocmd BufWritePre <buffer> lua org_imports(1000)]]
-
--- Format on save
--- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
