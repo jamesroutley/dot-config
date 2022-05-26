@@ -291,6 +291,7 @@ local on_attach = function(client, bufnr)
   local filetype = vim.api.nvim_buf_get_option(0, 'filetype')
 
   if filetype == 'go' then
+      vim.cmd [[autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting()]]
       vim.cmd [[autocmd BufWritePre <buffer> :lua goimports(2000)]]
   end
 end
