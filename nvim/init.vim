@@ -65,7 +65,7 @@ Plug 'editorconfig/editorconfig-vim'
 " let g:deoplete#enable_at_startup = 1
 
 " COC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Vim Markdown
 " Plug 'plasticboy/vim-markdown'
