@@ -3,7 +3,10 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Auto Pairs: insert or delete brackets, parens, quotes in pairs
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+
+" Nvim autopairs
+Plug 'windwp/nvim-autopairs'
 
 " nvim-lspconfig: LSP for nvim
 Plug 'neovim/nvim-lspconfig'
@@ -69,6 +72,17 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Vim Markdown
 " Plug 'plasticboy/vim-markdown'
+
+"cmp dependencies
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+"snippets
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
 
 " Initialise plugin system
 call plug#end()
@@ -231,9 +245,17 @@ autocmd BufNewFile,BufRead *.skt   set syntax=clojure
 " Set commentstring for Sketch files, so vim-commentry works
 autocmd BufNewFile,BufRead *.skt   set commentstring=;%s
 
+" Terraform syntax highlighting
+autocmd BufNewFile,BufRead *.tf   set syntax=tf
+
 " autocmd BufNewFile,BufRead *.skt   set formatprg=sketch\ format
 
 " Use SQL syntax highlighting for Sketch files
 autocmd BufNewFile,BufRead *.cql   set syntax=sql
 
 lua require 'lsp_config'
+lua require 'cmp_config'
+
+lua << EOF
+require("nvim-autopairs").setup {}
+EOF

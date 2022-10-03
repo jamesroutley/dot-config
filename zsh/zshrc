@@ -56,7 +56,7 @@ alias gcne="git commit --amend --no-edit"
 alias gp="git push"
 gpn() {
     git push --set-upstream origin $(git branch --show-current)
-    open https://github.com/monzo/wearedev/pull/new/$(git branch --show-current)
+    open https://github.com/avianlabs/backend/pull/new/$(git branch --show-current)
 }
 gwip() {
     git add .
@@ -109,7 +109,7 @@ function gwd () {
 [ -f $HOME/.config/zsh/personal.sh ] && source $HOME/.config/zsh/personal.sh
 
 # Set up Monzo specific things
-[ -f $HOME/.config/zsh/monzo.sh ] && source $HOME/.config/zsh/monzo.sh
+[ -f $HOME/.config/zsh/sling.sh ] && source $HOME/.config/zsh/sling.sh
 
 
 [ -f /Users/jamesroutley/code/mz/analytics/dbt/misc/shell/source.sh ] && source /Users/jamesroutley/code/mz/analytics/dbt/misc/shell/source.sh
@@ -135,3 +135,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
 [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 [ -f $HOME/src/github.com/monzo/starter-pack/zshrc ] && source $HOME/src/github.com/monzo/starter-pack/zshrc
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
