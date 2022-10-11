@@ -23,6 +23,9 @@ Plug 'airblade/vim-gitgutter'
 " Dracula: a spooky theme
 Plug 'dracula/vim'
 
+" Nvim treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " Polyglot: syntax highlighting for common languages
 " Plug 'sheerun/vim-polyglot'
 
@@ -246,7 +249,7 @@ autocmd BufNewFile,BufRead *.skt   set syntax=clojure
 autocmd BufNewFile,BufRead *.skt   set commentstring=;%s
 
 " Terraform syntax highlighting
-autocmd BufNewFile,BufRead *.tf   set syntax=tf
+" autocmd BufNewFile,BufRead *.tf   set syntax=tf
 
 " autocmd BufNewFile,BufRead *.skt   set formatprg=sketch\ format
 
@@ -255,6 +258,7 @@ autocmd BufNewFile,BufRead *.cql   set syntax=sql
 
 lua require 'lsp_config'
 lua require 'cmp_config'
+lua require 'treesitter_config'
 
 lua << EOF
 require("nvim-autopairs").setup {}

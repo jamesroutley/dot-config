@@ -60,9 +60,7 @@ lspconfig.gopls.setup {
     cmd = {"gopls", "serve"},
 	filetypes = {"go", "gomod"},
 
-	-- Ignore typical project roots which cause gopls to ingest large monorepos.
-	--root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-	root_dir = util.root_pattern("main.go", "README.md", "LICENSE"),
+	-- root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 
 	settings = {
 		gopls = {
