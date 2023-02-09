@@ -55,8 +55,7 @@ alias gc="git commit"
 alias gcne="git commit --amend --no-edit"
 alias gp="git push"
 gpn() {
-    git push --set-upstream origin $(git branch --show-current)
-    open https://github.com/avianlabs/backend/pull/new/$(git branch --show-current)
+    git push --set-upstream origin $(git branch --show-current) && open https://github.com/avianlabs/backend/pull/new/$(git branch --show-current)
 }
 gwip() {
     git add .
@@ -138,3 +137,5 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+source <(cli completion zsh)

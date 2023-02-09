@@ -138,9 +138,10 @@ nnoremap = :vsplit<cr>
 
 " Custom ALE linters
 :let g:ale_linters = {
-\	'go': ['goimports', 'go build', 'go vet', 'staticcheck'],
+\	'go': ['goimports', 'go build', 'go vet', 'staticcheck', 'golangci-lint'],
 \	'markdown': [],
-\   'javascript': []
+\   'javascript': [],
+\   'proto': ['buf-lint']
 \}
 
 " Custom ALE fixers
@@ -160,6 +161,7 @@ nnoremap = :vsplit<cr>
 let g:ale_fix_on_save = 0
 
 let g:ale_go_staticcheck_lint_package = 1
+" let g:ale_go_golangci_lint_package = 1
 
 " Disable gopls
 let g:go_gopls_enabled = 0
