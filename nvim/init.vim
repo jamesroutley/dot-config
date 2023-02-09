@@ -96,6 +96,8 @@ let mapleader = " "
 " Quickly save with ,w
 nmap <leader>w :w!<cr>
 
+nmap <leader>lr :LspRestart<cr>
+
 " Easy split navigation
 map <C-j> <C-w>j
 map <C-k> <C-W>k
