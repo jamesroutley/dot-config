@@ -32,9 +32,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Ale: asynchronous lint engine
 Plug 'w0rp/ale'
 
-" Vim Go: Golang development
-" Plug 'fatih/vim-go'
-
 " Vim Vinegar: Simplify netrw
 Plug 'tpope/vim-vinegar'
 
@@ -140,7 +137,7 @@ nnoremap = :vsplit<cr>
 
 " Custom ALE linters
 :let g:ale_linters = {
-\	'go': ['goimports', 'go build', 'go vet', 'staticcheck', 'golangci-lint'],
+\	'go': ['goimports', 'go build', 'go vet', 'golangci-lint'],
 \	'markdown': [],
 \   'javascript': [],
 \   'proto': ['buf-lint']
@@ -157,23 +154,14 @@ nnoremap = :vsplit<cr>
 \	'css': ['prettier'],
 \   'markdown': ['prettier'],
 \	'typescript': ['prettier'],
-\   'vimwiki': ['prettier']
+\   'vimwiki': ['prettier'],
+\   'graphql': ['prettier']
 \}
 
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 
 let g:ale_go_staticcheck_lint_package = 1
 " let g:ale_go_golangci_lint_package = 1
-
-" Disable gopls
-let g:go_gopls_enabled = 0
-" Replace functions that use gopls by default with other implementations
-let g:go_info_mode = 'guru'
-let g:go_def_mode = 'guru'
-let g:go_referrers_mode = 'guru'
-
-" Monzo import sorting
-let g:ale_go_goimports_options = '-local "github.monzo.com"'
 
 " Wrap long lines on spaces/tabs rather than the last character that fits on the screen
 set linebreak
