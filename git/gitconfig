@@ -19,6 +19,9 @@
 [url "ssh://git@github.com/monzo/"]
 	insteadOf = https://github.com/monzo/
 
+[url "ssh://git@github.com/avianlabs"]
+	insteadOf = https://github.com/avianlabs
+
 [interactive]
     diffFilter = delta --color-only
 
