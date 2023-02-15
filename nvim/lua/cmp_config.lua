@@ -21,7 +21,7 @@ cmp.setup({
 		mapping = {
 				['<C-x><C-o>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
 				-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-				 ['<CR>'] = cmp.mapping.confirm({ select = true }),
+				['<CR>'] = cmp.mapping.confirm({ select = true }),
 				['<C-y>'] = cmp.mapping.confirm({ select = true }),
 				['<C-b>'] = cmp.mapping.select_prev_item(),
 				-- Defaults, except <C-e>
