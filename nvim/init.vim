@@ -14,6 +14,9 @@ Plug 'neovim/nvim-lspconfig'
 " Zig language
 Plug 'ziglang/zig.vim'
 
+" Copilot
+Plug 'github/copilot.vim'
+
 " Commentary: comment out lines of code
 Plug 'tpope/vim-commentary'
 
@@ -145,7 +148,6 @@ nnoremap = :vsplit<cr>
 
 " Custom ALE fixers
 :let g:ale_fixers = {
-\	'go': ['goimports'],
 \	'python': ['black', 'yapf'],
 \	'javascript': ['prettier'],
 \	'json': ['prettier'],
@@ -161,7 +163,7 @@ nnoremap = :vsplit<cr>
 let g:ale_fix_on_save = 1
 
 let g:ale_go_staticcheck_lint_package = 1
-" let g:ale_go_golangci_lint_package = 1
+let g:ale_go_golangci_lint_package = 1
 
 " Wrap long lines on spaces/tabs rather than the last character that fits on the screen
 set linebreak
@@ -247,6 +249,12 @@ autocmd BufNewFile,BufRead *.skt   set commentstring=;%s
 
 " Use SQL syntax highlighting for Sketch files
 autocmd BufNewFile,BufRead *.cql   set syntax=sql
+
+" Vsnip moving
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
 lua require 'lsp_config'
 lua require 'cmp_config'
