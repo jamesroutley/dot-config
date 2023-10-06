@@ -153,6 +153,7 @@ nnoremap = :vsplit<cr>
 \	'json': ['prettier'],
 \   'javascriptreact': ['prettier'],
 \	'html': ['prettier'],
+\	'mjml': ['prettier'],
 \	'css': ['prettier'],
 \   'markdown': ['prettier'],
 \	'typescript': ['prettier'],
@@ -241,6 +242,11 @@ autocmd Filetype vimwiki nmap <C-k> <Plug>VimwikiPrevLink
 autocmd BufNewFile,BufRead *.skt   set syntax=clojure
 " Set commentstring for Sketch files, so vim-commentry works
 autocmd BufNewFile,BufRead *.skt   set commentstring=;%s
+
+" Set MJML filetype for .mjml files
+autocmd BufNewFile,BufRead *.mjml   set filetype=mjml
+" Use XML syntax highlighting for MJML files
+autocmd BufNewFile,BufRead *.mjml   set syntax=xml
 
 " Terraform syntax highlighting
 " autocmd BufNewFile,BufRead *.tf   set syntax=tf

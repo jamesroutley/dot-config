@@ -55,7 +55,10 @@ alias gc="git commit"
 alias gcne="git commit --amend --no-edit"
 alias gp="git push"
 gpn() {
-    git push --set-upstream origin $(git branch --show-current) && open https://github.com/avianlabs/backend/pull/new/$(git branch --show-current)
+    local remote=$(git config --get remote.origin.url)
+    local repo=$(basename -s .git "$remote")
+
+    git push --set-upstream origin $(git branch --show-current) && open https://github.com/avianlabs/$repo/pull/new/$(git branch --show-current)
 }
 gwip() {
     git add .

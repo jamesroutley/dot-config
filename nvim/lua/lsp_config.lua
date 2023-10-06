@@ -43,12 +43,12 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
   local filetype = vim.api.nvim_buf_get_option(0, 'filetype')
 
   if filetype == 'go' then
-      vim.cmd [[autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting()]]
+      vim.cmd [[autocmd BufWritePre <buffer> :lua vim.lsp.buf.format()]]
       vim.cmd [[autocmd BufWritePre <buffer> :lua goimports(2000)]]
   end
 end
@@ -81,5 +81,7 @@ lspconfig.gopls.setup {
 lspconfig.terraformls.setup{}
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
   pattern = {"*.tf", "*.tfvars"},
-  callback = vim.lsp.buf.formatting_sync,
+  callback = function()
+    vim.lsp.buf.format()
+  end
 })
