@@ -13,3 +13,6 @@ symbol = "🌱 "
 
 [time]
 disabled = false
+
+[python]
+symbol = "🐍 "
