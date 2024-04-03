@@ -36,3 +36,5 @@
     colorMoved = default
 [push]
 	autoSetupRemote = true
+[branch]
+	sort = -committerdate

@@ -142,3 +142,9 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 source <(cli completion zsh)
+
+function uid() {
+    uuidgen | tr -d '\n' | pbcopy
+    echo "Copied to clipboard"
+}
+eval "$(atuin init zsh)"

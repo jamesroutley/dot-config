@@ -186,6 +186,9 @@ let g:ctrlsf_auto_focus = {
 set wildmode=longest,list,full
 set wildmenu
 
+" Keep at least 10 lines of context when scrolling
+set scrolloff=10
+
 " Use '%' to jump to the corresponding HTML tag
 runtime macros/matchit.vim
 
