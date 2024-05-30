@@ -147,4 +147,8 @@ function uid() {
     uuidgen | tr -d '\n' | pbcopy
     echo "Copied to clipboard"
 }
+
+alias userp="echo -n user_cd7vnhve018ks38sl6tg | pbcopy && echo 'Copied to clipboard'"
+alias users="echo -n user_ch8igtucnq6qpt0et880 | pbcopy && echo 'Copied to clipboard'"
+
 eval "$(atuin init zsh)"

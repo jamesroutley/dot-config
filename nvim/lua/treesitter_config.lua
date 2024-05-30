@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "go", "hcl", "graphql", "kotlin", "swift" },
+  ensure_installed = { "go", "hcl", "graphql", "kotlin", "swift", "terraform" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,

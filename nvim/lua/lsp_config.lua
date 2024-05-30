@@ -66,7 +66,6 @@ lspconfig.gopls.setup {
 		gopls = {
 			-- Don't try to find the go.mod file, otherwise we ingest large monorepos
 			expandWorkspaceToModule = false,
-			memoryMode = "DegradeClosed",
 			directoryFilters = {
 				"-vendor",
 				"-manifests",
