@@ -157,6 +157,7 @@ nnoremap = :vsplit<cr>
 \	'css': ['prettier'],
 \   'markdown': ['prettier'],
 \	'typescript': ['prettier'],
+\	'typescriptreact': ['prettier'],
 \   'vimwiki': ['prettier'],
 \   'graphql': ['prettier']
 \}

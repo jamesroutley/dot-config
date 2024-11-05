@@ -52,6 +52,8 @@ alias ll='ls -hlGFA'
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
+alias gd="git diff"
+alias gdc="git diff --cached"
 alias gcne="git commit --amend --no-edit"
 alias gp="git push"
 gpn() {
@@ -127,6 +129,8 @@ if [ -f '/Users/jamesroutley/google-cloud-sdk/completion.zsh.inc' ]; then . '/Us
 
 function j64() {echo "$1" | base64 -D | jq}
 
+function jraw() {echo "$1" | jq -r | jq}
+
 # Stop profiling startup time.
 # unsetopt XTRACE
 # exec 2>&3 3>&-
@@ -152,3 +156,5 @@ alias userp="echo -n user_cd7vnhve018ks38sl6tg | pbcopy && echo 'Copied to clipb
 alias users="echo -n user_ch8igtucnq6qpt0et880 | pbcopy && echo 'Copied to clipboard'"
 
 eval "$(atuin init zsh)"
+
+export RIPGREP_CONFIG_PATH="$HOME/.config/.ripgreprc"
